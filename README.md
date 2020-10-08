@@ -9,3 +9,30 @@
 ```
 
 Collection of C++ Utilities
+
+# Features
+
+* TypeId
+  * Fast threadsafe type identification
+  * Is not reliable over multiple processes or sessions
+
+
+# Examples
+
+##### **`Type Id`**
+```cpp
+#include <dubu_util/dubu_util.h>
+
+struct Foo{};
+struct Bar{};
+
+int main(){
+  Foo foo;
+  Bar bar;
+
+  dubu::util::TypeId::Get<Foo>();   // 1
+  dubu::util::TypeId::Get<Bar>();   // 2
+  dubu::util::TypeId::Get(foo);     // 1
+  dubu::util::TypeId::Get(bar);     // 2
+}
+```
